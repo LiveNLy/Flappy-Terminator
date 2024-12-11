@@ -1,3 +1,3 @@
 using UnityEngine;
 
-public class GameBackground : Prefab { }
+public class GameBackground : ObjectMover { }

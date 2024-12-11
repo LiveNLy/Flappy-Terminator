@@ -7,19 +7,20 @@ public class InputReader : MonoBehaviour
     [SerializeField] private float _delay = 1.5f;
 
     private float _delayBeforeShoot = 0f;
+    private float _delayReduce = 0.5f;
     private Coroutine _coroutine;
 
     public event Action Jumped;
     public event Action JumpAnimating;
     public event Action Shooted;
 
-    void Update()
+    private void Update()
     {
-        Shoot();
-        Jump();
+        ShootInput();
+        JumpInput();
     }
 
-    private void Shoot()
+    private void ShootInput()
     {
         if (Input.GetKeyUp(KeyCode.D) && _delayBeforeShoot <= 0 && _coroutine == null)
         {
@@ -29,7 +30,7 @@ public class InputReader : MonoBehaviour
         }
     }
 
-    private void Jump()
+    private void JumpInput()
     {
         if (Input.GetKeyUp(KeyCode.A))
         {
@@ -42,7 +43,7 @@ public class InputReader : MonoBehaviour
     {
         while (_delayBeforeShoot > 0)
         {
-            _delayBeforeShoot -= 0.5f;
+            _delayBeforeShoot -= _delayReduce;
 
             yield return new WaitForSeconds(0.5f);
         }

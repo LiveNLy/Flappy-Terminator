@@ -18,7 +18,7 @@ public class EnemySpawner : Spawner<Enemy>
         _coroutine = StartCoroutine(SpawnerTimer());
     }
 
-    protected override void SetObject(Prefab prefab)
+    protected override void SetObject(ObjectMover prefab)
     {
         prefab.transform.position = SetPosition();
         prefab.gameObject.SetActive(true);

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Prefab : MonoBehaviour
+public class ObjectMover : MonoBehaviour
 {
     [SerializeField] private PointToMove _pointToMove;
     [SerializeField] private float _speed;

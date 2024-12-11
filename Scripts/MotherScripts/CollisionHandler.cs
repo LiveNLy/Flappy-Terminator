@@ -7,7 +7,7 @@ public class CollisionHandler : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.TryGetComponent(out EnemyBullet bullet) || collision.gameObject.TryGetComponent(out Enemy enemy) || collision.gameObject.TryGetComponent(out Deathzone deathzone))
+        if (collision.gameObject.TryGetComponent(out IDanger danger))
         {
             GettingHit?.Invoke();
         }

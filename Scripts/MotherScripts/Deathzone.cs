@@ -1,3 +1,3 @@
 using UnityEngine;
 
-public class Deathzone : MonoBehaviour { }
+public class Deathzone : MonoBehaviour, IDanger { }

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Deleter<T> : MonoBehaviour where T : Prefab
+public class Deleter<T> : MonoBehaviour where T : ObjectMover
 {
     [SerializeField] private Spawner<T> _spawner;
 

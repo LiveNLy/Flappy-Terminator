@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class EnemyCollisionHandler : CollisionHandler
@@ -9,6 +8,10 @@ public class EnemyCollisionHandler : CollisionHandler
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.TryGetComponent(out BackgroundDeleter deleter))
+        {
+            _spawner.ReleaseObject(_enemy);
+        }
+        else if (collision.gameObject.TryGetComponent(out CharacterBullet bullet))
         {
             _spawner.ReleaseObject(_enemy);
         }

@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class CharacterAnimator : MonoBehaviour
 {
+    private const string Jump = nameof(Jump);
+
     [SerializeField] private int _maxFramesTillFall = 2;
     [SerializeField] private Animator _animator;
     [SerializeField] private InputReader _inputReader;
@@ -23,18 +25,18 @@ public class CharacterAnimator : MonoBehaviour
     private void StartAnimation()
     {
         if (_coroutine == null)
-            _coroutine = StartCoroutine(AnimationCounter());
+            _coroutine = StartCoroutine(AnimationFallFrameCounter());
         else
         {
             StopCoroutine(_coroutine);
-            _coroutine = StartCoroutine(AnimationCounter());
+            _coroutine = StartCoroutine(AnimationFallFrameCounter());
         }
     }
 
-    private IEnumerator AnimationCounter()
+    private IEnumerator AnimationFallFrameCounter()
     {
         float framesTillFall = _maxFramesTillFall;
-        _animator.SetBool("Jump", true);
+        _animator.SetBool(Jump, true);
 
         while (framesTillFall > 0)
         {
@@ -42,6 +44,6 @@ public class CharacterAnimator : MonoBehaviour
             yield return _wait;
         }
 
-        _animator.SetBool("Jump", false);
+        _animator.SetBool(Jump, false);
     }
 }

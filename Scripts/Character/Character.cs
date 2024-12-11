@@ -1,9 +1,7 @@
 using UnityEngine;
 
-public class Character : MonoBehaviour 
+public class Character : MonoBehaviour
 {
-    [SerializeField] private GameMenuController _game;
-
     private Vector2 _position;
 
     private void Awake()
@@ -11,17 +9,7 @@ public class Character : MonoBehaviour
         _position = transform.position;
     }
 
-    private void OnEnable()
-    {
-        _game.RestartGame += Restart;
-    }
-
-    private void OnDisable()
-    {
-        _game.RestartGame -= Restart;
-    }
-
-    private void Restart()
+    public void Restart()
     {
         transform.position = _position;
     }
